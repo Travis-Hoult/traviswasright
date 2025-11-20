@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -133,6 +134,7 @@
                 opacity: 0;
                 transform: translateY(-10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -224,6 +226,7 @@
         }
     </style>
 </head>
+
 <body class="dark theme-midnight">
     <div class="controls">
         <select id="themeSelect" class="btn-small">
@@ -237,7 +240,7 @@
 
     <div class="container">
         <h1 id="dynamicHeader">Someone wants you to know...</h1>
-        
+
         <div class="image-container">
             <img src="twr.jpg" alt="Main Image">
         </div>
@@ -253,8 +256,49 @@
             "I should never have doubted that...",
             "I sleep easy knowing that...",
             "Why did i ever doubt that...",
-            "I should of know that...",
-            "If in doubt always remember..."
+            "I should of known that...",
+            "If in doubt always remember...",
+            "You can’t ignore the fact that...",
+            "Deep down you always knew that...",
+            "No matter what happens remember...",
+            "It's clear to see that...",
+            "One thing's for sure...",
+            "You have to accept that...",
+            "It's obvious that...",
+            "Don't forget that...",
+            "Always keep in mind that...",
+            "There’s one truth that keeps coming back...",
+            "When everything settles, it’s clear that...",
+            "In the end, you’ll realize that...",
+            "The undeniable fact is that...",
+            "It's written in the stars that...",
+            "If you think about it for a moment, you’ll realise...",
+            "Looking back now, it’s obvious that...",
+            "When the dust clears, you always find that...",
+            "Every time this comes up, it turns out...",
+            "Say it with confidence because...",
+            "History keeps proving that...",
+            "Even the toughest critics admit that...",
+            "When all options fail, remember...",
+            "There’s only one safe bet in moments like this...",
+            "The smart people already know that...",
+            "You can argue all day but eventually...",
+            "Whenever the signs point in every direction, just know...",
+            "At the end of every argument, it always comes back to the fact that...",
+            "If you trust nothing else, trust that...",
+            "There’s one constant in all of this, and it’s that...",
+            "When you strip everything back, you’re left with the truth that...",
+            "Every path you take eventually shows you that...",
+            "It only takes one good look to realise that...",
+            "Whenever you need a reminder of reality, remember that...",
+            "You can test every theory, but you’ll land on the same answer...",
+            "Anyone paying attention can see that...",
+            "Deep down, you already know that...",
+            "Ask anyone who’s been around long enough and they’ll tell you...",
+            "Experience teaches you quickly that...",
+            "If you want the safest conclusion, rely on the fact that...",
+            "When all voices quiet down, the clear truth is...",
+            "Even on your worst day, it’s still obvious that...",
         ];
 
         const headerElement = document.getElementById('dynamicHeader');
@@ -270,7 +314,7 @@
             do {
                 newIndex = Math.floor(Math.random() * headers.length);
             } while (newIndex === currentIndex && headers.length > 1);
-            
+
             currentIndex = newIndex;
             headerElement.style.animation = 'none';
             setTimeout(() => {
@@ -298,4 +342,5 @@
         });
     </script>
 </body>
+
 </html>
