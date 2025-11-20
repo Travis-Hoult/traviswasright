@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Someone Wants You To Know...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Theme Variables */
+        body.dark.theme-midnight {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e8e8e8;
+        }
+
+        body.light.theme-midnight {
+            background: linear-gradient(135deg, #f0f0f5 0%, #e8e8f0 100%);
+            color: #1a1a2e;
+        }
+
+        body.dark.theme-ocean {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: #e8f4f8;
+        }
+
+        body.light.theme-ocean {
+            background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);
+            color: #0f2027;
+        }
+
+        body.dark.theme-sunset {
+            background: linear-gradient(135deg, #2c1a3e 0%, #3d1f4d 50%, #5e2750 100%);
+            color: #ffd8e4;
+        }
+
+        body.light.theme-sunset {
+            background: linear-gradient(135deg, #fff5e1 0%, #ffe4e1 100%);
+            color: #2c1a3e;
+        }
+
+        body.dark.theme-forest {
+            background: linear-gradient(135deg, #1a2f1a 0%, #2d4a2d 100%);
+            color: #e8f5e8;
+        }
+
+        body.light.theme-forest {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            color: #1a2f1a;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        select.btn-small {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        select.btn-small option {
+            background: white;
+            color: #333;
+        }
+
+        body.dark .btn-small {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        body.light .btn-small {
+            background: rgba(0, 0, 0, 0.05);
+            color: #333;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-small:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            margin-bottom: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            animation: fadeIn 0.5s ease;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .image-container {
+            margin: 40px auto;
+            max-width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .image-container img {
+            width: 60%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .button-container {
+            margin-top: 40px;
+        }
+
+        .main-button {
+            padding: 16px 48px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        body.dark .main-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        body.light .main-button {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
+        }
+
+        .main-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .main-button:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            .controls {
+                top: 10px;
+                right: 10px;
+                flex-direction: column;
+            }
+
+            h1 {
+                margin-bottom: 20px;
+                min-height: 60px;
+            }
+
+            .image-container {
+                margin: 20px auto;
+            }
+
+            .main-button {
+                padding: 14px 32px;
+                font-size: 1rem;
+            }
+
+            .button-container {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="dark theme-midnight">
+    <div class="controls">
+        <select id="themeSelect" class="btn-small">
+            <option value="theme-midnight">Midnight</option>
+            <option value="theme-ocean">Ocean</option>
+            <option value="theme-sunset">Sunset</option>
+            <option value="theme-forest">Forest</option>
+        </select>
+        <button id="modeToggle" class="btn-small">☀️ Light</button>
+    </div>
+
+    <div class="container">
+        <h1 id="dynamicHeader">Someone wants you to know...</h1>
+        
+        <div class="image-container">
+            <img src="twr.jpg" alt="Main Image">
+        </div>
+
+        <div class="button-container">
+            <button class="main-button" id="changeHeader">Click Me If You Know</button>
+        </div>
+    </div>
+
+    <script>
+        const headers = [
+            "Someone wants you to know...",
+            "I should never have doubted that...",
+            "I sleep easy knowing that...",
+            "Why did i ever doubt that...",
+            "I should of know that...",
+            "If in doubt always remember..."
+        ];
+
+        const headerElement = document.getElementById('dynamicHeader');
+        const changeButton = document.getElementById('changeHeader');
+        const modeToggle = document.getElementById('modeToggle');
+        const themeSelect = document.getElementById('themeSelect');
+        const body = document.body;
+
+        let currentIndex = 0;
+
+        changeButton.addEventListener('click', () => {
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * headers.length);
+            } while (newIndex === currentIndex && headers.length > 1);
+            
+            currentIndex = newIndex;
+            headerElement.style.animation = 'none';
+            setTimeout(() => {
+                headerElement.textContent = headers[currentIndex];
+                headerElement.style.animation = 'fadeIn 0.5s ease';
+            }, 10);
+        });
+
+        modeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark')) {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                modeToggle.textContent = '🌙 Dark';
+            } else {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                modeToggle.textContent = '☀️ Light';
+            }
+        });
+
+        themeSelect.addEventListener('change', (e) => {
+            body.className = '';
+            body.classList.add(body.classList.contains('light') ? 'light' : 'dark');
+            body.classList.add(e.target.value);
+        });
+    </script>
+</body>
+</html>
